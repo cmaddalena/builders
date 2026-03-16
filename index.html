@@ -6,12 +6,11 @@
     <title>Builders - Real Estate Membership Club</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #ffc107;
-            --primary-dark: #cc9a06;
             --bg: #050505;
             --card-bg: #0d0d0d;
             --border: #1a1a1a;
@@ -19,11 +18,7 @@
             --text-dim: #888;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
             font-family: 'Urbanist', sans-serif;
@@ -33,54 +28,25 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .brand-font {
-            font-family: 'Playfair Display', serif;
-        }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         
-        /* Navigation */
+        /* --- NAVIGATION --- */
         header {
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(5, 5, 5, 0.8);
+            top: 0; left: 0; right: 0;
+            background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(15px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
         }
         
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: 2px;
-            font-family: 'Urbanist';
-        }
-        
-        .logo-text span {
-            color: var(--primary);
-        }
-        
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+        .logo-img { height: 40px; width: auto; }
+
         .header-cta {
             background: var(--primary);
             color: #000;
@@ -91,341 +57,235 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
-
-        .header-cta:hover {
-            background: #fff;
-            transform: translateY(-2px);
-        }
+        .header-cta:hover { background: #fff; transform: translateY(-2px); }
         
-        /* Hero */
+        /* --- HERO --- */
         .hero {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px 0 80px;
-            position: relative;
+            padding: 140px 0 40px;
+            background: radial-gradient(circle at 50% 30%, rgba(255, 193, 7, 0.05) 0%, transparent 70%);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin-bottom: 40px; font-weight: 300; }
+
+        /* --- GRAPHIC ECOSYSTEM --- */
+        .ecosystem-section { padding: 40px 0 80px; background: #080808; border-top: 1px solid var(--border); text-align: center; position: relative; }
+        .graphic-wrapper { 
+            position: relative; 
+            max-width: 700px; 
+            margin: 40px auto; 
+            aspect-ratio: 1/1; 
+        }
+        .pentagon-svg { width: 100%; height: 100%; overflow: visible; }
+
+        @keyframes rotateText { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulseGlow { 
+            0% { r: 5; opacity: 0.8; stroke-width: 0; }
+            50% { r: 18; opacity: 0; stroke-width: 4; }
+            100% { r: 5; opacity: 0; }
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 193, 7, 0.05) 0%, transparent 70%);
+        .ring-text { fill: var(--primary); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 8px; opacity: 0.4; transform-origin: center; animation: rotateText 60s linear infinite; }
+        
+        .actor-node { cursor: pointer; }
+        .node-dot { fill: var(--primary); r: 7; transition: 0.3s; }
+        .node-pulse { fill: var(--primary); r: 7; animation: pulseGlow 2s infinite ease-out; pointer-events: none; }
+        .actor-node:hover .node-dot { fill: #fff; r: 9; }
+        
+        .node-label { 
+            fill: #fff; 
+            font-size: 13px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
             pointer-events: none;
         }
-        
-        .badge {
-            display: inline-block;
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 2px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 32px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        h1 {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 30px;
-            color: #fff;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            max-width: 700px;
-            margin: 0 auto 48px;
-            font-weight: 300;
-        }
-        
-        .hero-cta {
-            display: inline-block;
-            background: var(--primary);
-            color: #000;
-            padding: 20px 50px;
-            border-radius: 4px;
-            font-weight: 800;
-            font-size: 1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.2);
-        }
 
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            background: #fff;
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Sections Shared */
-        section {
-            padding: 100px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .section-tag {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 60px;
-            color: #fff;
-        }
-        
-        /* Problem Section */
-        .problem { background: #080808; }
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .problem-card {
-            padding: 40px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            position: relative;
-            transition: 0.3s;
-        }
-
-        .problem-card:hover {
-            border-color: #333;
-        }
-
-        .problem-card span {
-            font-family: 'Playfair Display';
-            font-size: 3rem;
-            color: var(--primary);
-            opacity: 0.1;
+        .info-card {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            width: 310px;
+            background: rgba(10, 10, 10, 0.98);
+            border: 1px solid var(--primary);
+            padding: 24px;
+            border-radius: 8px;
+            text-align: left;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 200;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
         }
-        
-        .problem-card h3 {
-            font-family: 'Urbanist';
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        
-        .problem-card p {
-            color: var(--text-dim);
-            font-size: 1rem;
-            font-weight: 300;
-        }
-        
-        /* Ecosystem */
-        .ecosystem { text-align: center; }
-        .ecosystem .subtitle { color: var(--text-dim); max-width: 700px; margin: -40px auto 60px; font-size: 1.2rem; }
+        .info-card.active { opacity: 1; transform: translateY(0); }
+        .info-card h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+        .info-card .item { margin-bottom: 10px; }
+        .info-card label { color: #fff; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; display: block; opacity: 0.5; }
+        .info-card p { font-size: 0.85rem; color: #ccc; line-height: 1.4; }
 
-        .chain-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
+        /* --- CONTENT SECTIONS --- */
+        section { padding: 90px 0; border-top: 1px solid var(--border); }
+        .section-tag { color: var(--primary); font-weight: 700; font-size: 0.9rem; letter-spacing: 3px; display: block; margin-bottom: 15px; text-transform: uppercase; text-align: center; }
+        h2 { font-size: 2.8rem; margin-bottom: 60px; color: #fff; text-align: center; }
 
-        .chain-item {
-            background: linear-gradient(145deg, #111, #080808);
-            padding: 50px 30px;
-            border: 1px solid var(--border);
-            transition: 0.4s;
+        /* Pillars Section */
+        .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pillar-card { 
+            padding: 40px; 
+            background: linear-gradient(145deg, #111, #080808); 
+            border: 1px solid var(--border); 
+            transition: 0.3s; 
+            text-align: left;
         }
+        .pillar-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .pillar-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; display: block; }
+        .pillar-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: #fff; }
+        .pillar-card p { color: var(--text-dim); font-size: 1rem; font-weight: 300; }
 
-        .chain-item:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
+        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .problem-card { padding: 45px; background: var(--card-bg); border: 1px solid var(--border); position: relative; }
+        .problem-card span { font-family: 'Playfair Display'; font-size: 4rem; color: var(--primary); opacity: 0.08; position: absolute; top: 20px; right: 30px; }
 
-        .chain-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
+        /* Sustentabilidad */
+        .sustentabilidad { background: #080808; }
+        .sustentabilidad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .sustentabilidad-img { width: 100%; border-radius: 4px; filter: grayscale(100%); transition: 0.5s; }
+        .sustentabilidad-img:hover { filter: grayscale(0%); }
+        .check-list { list-style: none; margin-top: 25px; }
+        .check-list li { margin-bottom: 15px; display: flex; gap: 12px; }
+        .check-list i { color: var(--primary); margin-top: 5px; }
 
-        .chain-item h3 {
-            font-family: 'Urbanist';
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        
-        /* Pillars Triple C */
-        .pillars { background: #080808; }
-        .pillar-row {
-            display: flex;
-            align-items: center;
-            gap: 80px;
-            margin-bottom: 80px;
-        }
+        /* Board */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .team-card { text-align: center; background: var(--card-bg); padding: 50px 30px; border: 1px solid var(--border); transition: 0.3s; }
+        .team-photo { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; margin: 0 auto 30px; filter: grayscale(100%); border: 2px solid #1a1a1a; transition: 0.5s; }
+        .team-card:hover .team-photo { filter: grayscale(0%); border-color: var(--primary); transform: scale(1.05); }
+        .social-links { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+        .social-btn { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: #151515; color: #fff; border-radius: 4px; text-decoration: none; border: 1px solid #222; transition: 0.3s; }
+        .social-btn:hover { background: var(--primary); color: #000; }
 
-        .pillar-row:nth-child(even) { flex-direction: row-reverse; }
+        /* Pricing */
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
+        .price-card { padding: 60px 45px; background: var(--card-bg); border: 1px solid var(--border); text-align: center; position: relative; }
+        .price-card.featured { border: 2px solid var(--primary); }
+        .amount { font-family: 'Playfair Display'; font-size: 4rem; color: #fff; line-height: 1; margin: 20px 0; font-weight: 900; }
+        .price-list { text-align: left; list-style: none; margin-bottom: 35px; color: #aaa; font-size: 0.9rem; }
+        .price-list li { margin-bottom: 10px; display: flex; gap: 10px; }
+        .price-list i { color: var(--primary); margin-top: 4px; }
 
-        .pillar-content { flex: 1; }
-        .pillar-content h3 { font-size: 4rem; color: var(--primary); margin-bottom: 20px; line-height: 1; }
-        .pillar-content p { font-size: 1.3rem; color: #ccc; font-weight: 300; }
-
-        .pillar-visual {
-            flex: 1;
-            height: 350px;
-            background: #111;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            color: var(--primary);
-            opacity: 0.3;
-            transition: 0.5s;
-        }
-        
-        .pillar-row:hover .pillar-visual { opacity: 0.7; border-color: var(--primary); }
-        
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .team-card {
-            text-align: center;
-            background: var(--card-bg);
-            padding: 50px 30px;
-            border: 1px solid var(--border);
-            transition: 0.3s;
-        }
-
-        .team-card:hover { border-color: var(--primary); }
-        
-        .team-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 30px;
-            filter: grayscale(100%);
-            border: 2px solid var(--border);
-            transition: 0.5s;
-        }
-
-        .team-card:hover .team-photo { filter: grayscale(0%); border-color: var(--primary); }
-        
-        .team-card h3 { font-family: 'Urbanist'; font-size: 1.8rem; margin-bottom: 5px; }
-        .team-card .role { color: var(--primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
-        .team-card .bio { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 30px; min-height: 80px; }
-
-        .more-about { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #444; margin-bottom: 15px; padding-top: 20px; border-top: 1px solid #1a1a1a; }
-        .social-links { display: flex; justify-content: center; gap: 12px; }
-        .social-btn {
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #151515;
-            color: #fff;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            border: 1px solid #222;
-        }
-
-        .social-btn:hover { background: var(--primary); color: #000; transform: translateY(-3px); }
-        
-        /* Pricing / Membership */
-        .membership { background: #080808; }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 850px; margin: 0 auto; }
-        .price-card { padding: 60px 40px; background: var(--card-bg); border: 1px solid var(--border); text-align: center; }
-        .price-card.featured { border: 2px solid var(--primary); position: relative; }
-        .price-card.featured::after {
-            content: 'RECOMENDADO';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: #000;
-            padding: 4px 15px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .price-card h4 { font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        .price-card .amount { font-family: 'Playfair Display'; font-size: 4.5rem; color: #fff; line-height: 1; margin-bottom: 15px; }
-        .price-card .amount span { font-size: 1rem; color: var(--text-dim); font-family: 'Urbanist'; }
-        
-        /* CTA Final */
-        .final-cta { text-align: center; padding: 120px 0; background: linear-gradient(0deg, #111, #050505); border: none; }
-        .final-cta h2 { font-size: 3.5rem; margin-bottom: 20px; }
-        .final-cta p { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 40px; }
-        
-        /* Footer */
-        footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: #555; font-size: 0.9rem; }
+        footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: #444; font-size: 0.85rem; }
 
         @media (max-width: 768px) {
-            .pillar-row, .pillar-row:nth-child(even) { flex-direction: column; gap: 40px; }
-            h1 { font-size: 3.5rem; }
-            h2 { font-size: 2.2rem; }
-            .pillar-content h3 { font-size: 3rem; }
-            .pillar-visual { height: 250px; width: 100%; }
+            h1 { font-size: 2.8rem; }
+            .sustentabilidad-grid { grid-template-columns: 1fr; }
+            .graphic-wrapper { transform: scale(0.9); }
+            .info-card { width: 280px; left: 50% !important; transform: translateX(-50%) !important; bottom: -20px !important; top: auto !important; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="container">
             <a href="#" class="logo-box">
-                <div class="logo-text">BUILDERS<span>.</span></div>
+                <img src="logo_white.png" alt="Builders Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/45x45?text=B'">
+                <div style="font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;">BUILDERS</div>
             </a>
-            <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">Postularse →</a>
+           <!--  <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">QUIERO UNIRME →</a> -->
         </div>
     </header>
 
-    <section class="hero">
+    <!-- HERO -->
+   <section class="hero">
         <div class="container">
             <span class="badge">Ecosistema Real Estate</span>
             <h1>Profesionalizando el </br> Real Estate.</h1>
             <p>La primera comunidad <strong>Triple C</strong> diseñada para elevar la cadena de valor inmobiliaria a través de la conexión genuina y la tecnología.</p>
-            <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="hero-cta" target="_blank">Unirse al Club</a>
+            <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">QUIERO UNIRME →</a>
         </div>
     </section>
-    
-    <section class="problem">
+
+
+    <!-- ECOSYSTEM GRAPHIC -->
+    <section class="ecosystem-section" id="ecosistema">
+        <div class="container">
+            <span class="section-tag">Sinergia Triple C</span>
+            <h2 style="margin-bottom: 20px;">El Ecosistema Builders</h2>
+            <p style="color: var(--text-dim); max-width: 750px; margin: 0 auto 30px;">Un flujo circular donde cada actor potencia al otro. Descubrí el detalle en cada vértice.</p>
+            
+            <div class="graphic-wrapper">
+                <!-- Info Tooltip Dinámico -->
+                <div id="node-info" class="info-card">
+                    <h4 id="info-title">Actor</h4>
+                    <div class="item"><label>Quiénes son</label><p id="info-who">-</p></div>
+                    <div class="item"><label>Qué hacen</label><p id="info-do">-</p></div>
+                    <div class="item"><label>Qué buscan</label><p id="info-seek">-</p></div>
+                    <div class="item"><label>Qué aportan</label><p id="info-give">-</p></div>
+                </div>
+
+                <svg viewBox="0 0 800 800" class="pentagon-svg">
+                    <circle cx="400" cy="400" r="300" fill="none" stroke="#222" stroke-width="2" />
+                    <circle cx="400" cy="400" r="220" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="8 12" />
+                    
+                    <defs><path id="ringPath" d="M 400, 400 m -140, 0 a 140,140 0 1,1 280,0 a 140,140 0 1,1 -280,0" /></defs>
+                    <text class="ring-text"><textPath href="#ringPath">CONEXIÓN • CONOCIMIENTO • CRECIMIENTO • </textPath></text>
+
+                    <circle cx="400" cy="400" r="65" fill="#000" stroke="var(--primary)" stroke-width="2" />
+                    <image href="logo_white.png" x="350" y="350" height="100" width="100" />
+
+                    <!-- Node 1: Desarrolladores -->
+                    <g class="actor-node" onmouseenter="showInfo(0)" onmouseleave="hideInfo()" transform="translate(400, 100)">
+                        <circle class="node-pulse" cx="0" cy="0" />
+                        <circle class="node-dot" cx="0" cy="0" />
+                        <text class="node-label" y="-25" text-anchor="middle">Desarrolladores</text>
+                    </g>
+                    <!-- Node 2: Inmobiliarios -->
+                    <g class="actor-node" onmouseenter="showInfo(1)" onmouseleave="hideInfo()" transform="translate(685, 307)">
+                        <circle class="node-pulse" cx="0" cy="0" />
+                        <circle class="node-dot" cx="0" cy="0" />
+                        <text class="node-label" x="20" y="5" text-anchor="start">Inmobiliarios</text>
+                    </g>
+                    <!-- Node 3: Dueños PyME -->
+                    <g class="actor-node" onmouseenter="showInfo(2)" onmouseleave="hideInfo()" transform="translate(576, 642)">
+                        <circle class="node-pulse" cx="0" cy="0" />
+                        <circle class="node-dot" cx="0" cy="0" />
+                        <text class="node-label" x="20" y="20" text-anchor="start">Dueños PyME</text>
+                    </g>
+                    <!-- Node 4: Servicios Directos -->
+                    <g class="actor-node" onmouseenter="showInfo(3)" onmouseleave="hideInfo()" transform="translate(224, 642)">
+                        <circle class="node-pulse" cx="0" cy="0" />
+                        <circle class="node-dot" cx="0" cy="0" />
+                        <text class="node-label" x="-20" y="20" text-anchor="end">Servicios Directos</text>
+                    </g>
+                    <!-- Node 5: Servicios Indirectos -->
+                    <g class="actor-node" onmouseenter="showInfo(4)" onmouseleave="hideInfo()" transform="translate(115, 307)">
+                        <circle class="node-pulse" cx="0" cy="0" />
+                        <circle class="node-dot" cx="0" cy="0" />
+                        <text class="node-label" x="-20" y="5" text-anchor="end">Servicios Indirectos</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section>
         <div class="container">
             <span class="section-tag">Contexto Actual</span>
-            <h2>El mercado cambió. ¿Tu red también?</h2>
+            <h2 style="text-align: left; max-width: 700px;">El mercado cambió. ¿Tu red de contactos también?</h2>
             <div class="problem-grid">
                 <div class="problem-card">
                     <span>01</span>
                     <h3>Soledad Operativa</h3>
-                    <p>Tomar decisiones estratégicas sin una mesa de confianza que valide tu visión en tiempo real.</p>
+                    <p>Tomar decisiones de millones de dólares sin una mesa de confianza que valide tu visión en tiempo real.</p>
                 </div>
                 <div class="problem-card">
                     <span>02</span>
@@ -435,160 +295,205 @@
                 <div class="problem-card">
                     <span>03</span>
                     <h3>Networking Vacío</h3>
-                    <p>Cansados de eventos donde se intercambian tarjetas que terminan en la basura. Buscamos alianzas reales.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="ecosystem">
-        <div class="container">
-            <span class="section-tag">Sinergia</span>
-            <h2>Ecosistema Integrado</h2>
-            <p class="subtitle">Conectamos a los protagonistas de toda la cadena para generar negocios con propósito.</p>
-            
-            <div class="chain-grid">
-                <div class="chain-item">
-                    <i class="fa-solid fa-city"></i>
-                    <h3>Desarrollo</h3>
-                    <p>Brokers, Inmobiliarias y Desarrolladores que lideran el mercado.</p>
-                </div>
-                <div class="chain-item">
-                    <i class="fa-solid fa-hard-hat"></i>
-                    <h3>Construcción</h3>
-                    <p>Empresas constructoras y proveedores clave de suministros.</p>
-                </div>
-                <div class="chain-item">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <h3>Servicios</h3>
-                    <p>Consultoría, Marketing, Legales y PropTech de vanguardia.</p>
+                    <p>Cansados de eventos sociales donde solo se intercambian tarjetas. Buscamos alianzas reales.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pillars">
+    <!-- PILLARS SECTION -->
+    <section id="pilares" style="background: #080808;">
         <div class="container">
-            <div class="pillar-row">
-                <div class="pillar-content">
-                    <span class="section-tag">Pilar 01</span>
+            <span class="section-tag">Nuestra Metodología</span>
+            <h2>Los Pilares de Builders</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <i class="fa-solid fa-link"></i>
                     <h3>Conexión</h3>
-                    <p>Networking guiado de alto nivel. Cenas íntimas de mesa redonda, viajes de negocios y un directorio exclusivo para acceso directo sin intermediarios.</p>
+                    <p>Networking guiado de alto nivel. Cenas íntimas de mesa redonda, viajes de negocios y un directorio exclusivo para que el contacto sea directo y sin intermediarios.</p>
                 </div>
-                <div class="pillar-visual"><i class="fa-solid fa-link"></i></div>
-            </div>
-            
-            <div class="pillar-row">
-                <div class="pillar-content">
-                    <span class="section-tag">Pilar 02</span>
+                <div class="pillar-card">
+                    <i class="fa-solid fa-brain"></i>
                     <h3>Conocimiento</h3>
-                    <p>Webinars técnicos quincenales, formación en IA aplicada al sector y mentorías con los referentes que ya escalaron sus compañías.</p>
+                    <p>Webinars técnicos quincenales, formación en IA aplicada al Real Estate y mentorías con quienes ya recorrieron el camino que vos querés transitar.</p>
                 </div>
-                <div class="pillar-visual"><i class="fa-solid fa-brain"></i></div>
-            </div>
-
-            <div class="pillar-row">
-                <div class="pillar-content">
-                    <span class="section-tag">Pilar 03</span>
+                <div class="pillar-card">
+                    <i class="fa-solid fa-chart-line"></i>
                     <h3>Crecimiento</h3>
-                    <p>Visibilidad de marca dentro del ecosistema, acceso a pools de inversión colaborativos y herramientas de productividad para dueños.</p>
+                    <p>Acceso a pools de inversión, visibilidad de marca dentro del ecosistema y herramientas de productividad para escalar tu negocio de manera rentable.</p>
                 </div>
-                <div class="pillar-visual"><i class="fa-solid fa-chart-line"></i></div>
             </div>
         </div>
     </section>
 
-    <section class="team">
+    <section class="sustentabilidad">
         <div class="container">
-            <span class="section-tag" style="text-align: center;">Board de Directores</span>
-            <h2 style="text-align: center;">Liderazgo y Visión</h2>
-            
+            <div class="sustentabilidad-grid">
+                <div>
+                    <span class="section-tag" style="text-align: left;">El Activo del Futuro</span>
+                    <h2 style="text-align: left; margin-bottom: 25px;">Sustentabilidad Rentable</h2>
+                    <p style="color: var(--text-dim); font-size: 1.2rem;">En un mercado de alta exigencia, la eficiencia no es filantropía, es rentabilidad pura.</p>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Valor de Activo:</strong> Edificios eficientes garantizan mayor valor de reventa.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Procesos Limpios:</strong> Tecnología para reducir drásticamente costos operativos.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Ventaja Competitiva:</strong> Liderar con estándares internacionales de construcción.</li>
+                    </ul>
+                </div>
+                <img src="https://images.unsplash.com/photo-1518005020251-582c7897655d?auto=format&fit=crop&w=800&q=80" alt="Sustentabilidad" class="sustentabilidad-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- BOARD SECTION -->
+    <section>
+        <div class="container">
+            <span class="section-tag">Board de Fundadores</span>
+            <h2>Liderazgo con Trayectoria</h2>
             <div class="team-grid">
-                <!-- Nestor -->
                 <div class="team-card">
-                    <img src="nestor.png" alt="Nestor Ciparelli" class="team-photo">
+                    <img src="nestor.png" alt="Nestor Ciparelli" class="team-photo" onerror="this.src='https://via.placeholder.com/170'">
                     <h3>Nestor Ciparelli</h3>
                     <p class="role">Desarrollador & Founder</p>
-                    <p class="bio">Fundador de <strong>Cipa Group</strong>. +30 años liderando desarrollos inmobiliarios y transformando el mercado.</p>
-                    
-                    <p class="more-about">Conectar</p>
+                    <p class="bio">Fundador de <strong>Cipa Group</strong>. +30 años liderando desarrollos de gran escala y transformando el mercado.</p>
                     <div class="social-links">
-                        <a href="https://ar.linkedin.com/in/nestor-ciparelli-cipa-group-88976716" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/ciparelli_propiedades/" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://ar.linkedin.com/in/nestor-ciparelli-cipa-group-88976716" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/ciparelli_propiedades/" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
-                <!-- Aldi -->
                 <div class="team-card">
-                    <img src="aldi.png" alt="Aldi Enriquez" class="team-photo">
+                    <img src="aldi.png" alt="Aldi Enriquez" class="team-photo" onerror="this.src='https://via.placeholder.com/170'">
                     <h3>Aldi Enriquez</h3>
-                    <p class="role">Estrategia & Mkt</p>
-                    <p class="bio">CEO de <strong>BE ALFA</strong>. Especialista en branding inmobiliario y comunicación auténtica para marcas líderes.</p>
-                    
-                    <p class="more-about">Conectar</p>
+                    <p class="role">Estrategia & Comunicación</p>
+                    <p class="bio">CEO de <strong>BE ALFA</strong>. Especialista en branding RE y comunicación auténtica para marcas líderes.</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/aldienriquez/" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://instagram.com/aldi.enriquez" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3zCeHxThO10iNM_8LKkq7q3F0ceyvhFAC7pIITbsMemoGQ1HVhXcX6qKBP5oo8C-j856ez88PS" target="_blank" class="social-btn" title="Agenda"><i class="fa-regular fa-calendar-check"></i></a>
+                        <a href="https://www.linkedin.com/in/aldienriquez/" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/aldi.enriquez" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3zCeHxThO10iNM_8LKkq7q3F0ceyvhFAC7pIITbsMemoGQ1HVhXcX6qKBP5oo8C-j856ez88PS" class="social-btn" target="_blank"><i class="fa-regular fa-calendar-check"></i></a>
                     </div>
                 </div>
-                
-                <!-- Charly -->
                 <div class="team-card">
-                    <img src="charly.png" alt="Charly Maddalena" class="team-photo">
+                    <img src="charly.png" alt="Charly Maddalena" class="team-photo" onerror="this.src='https://via.placeholder.com/170'">
                     <h3>Charly Maddalena</h3>
                     <p class="role">Procesos & IA</p>
                     <p class="bio">CEO de <strong>DelegUp</strong>. Mentor y experto en automatización con IA aplicada a la productividad comercial.</p>
-                    
-                    <p class="more-about">Conectar</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/carlosmaddalena" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://instagram.com/charly.maddalena" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://calendar.app.google/cvuwByFoxs6vpJ64A" target="_blank" class="social-btn" title="Agenda"><i class="fa-regular fa-calendar-check"></i></a>
+                        <a href="https://www.linkedin.com/in/carlosmaddalena" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/charly.maddalena" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://calendar.app.google/cvuwByFoxs6vpJ64A" class="social-btn" target="_blank"><i class="fa-regular fa-calendar-check"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="membership">
+    <!-- PRICING SECTION -->
+    <section style="background: #080808;">
         <div class="container">
-            <span class="section-tag" style="text-align: center;">Inversión</span>
-            <h2 style="text-align: center; margin-bottom: 60px;">Membresías</h2>
-            
+            <span class="section-tag">Membresías</span>
+            <h2>Inversión en tu Crecimiento</h2>
             <div class="price-grid">
                 <div class="price-card">
                     <h4>Free</h4>
-                    <div class="amount">US$0<span></span></div>
-                    <p style="color: #666; margin-bottom: 25px;">Acceso a newsletter, eventos gratuitos y novedades.</p>
-                    <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">Quiero ir →</a>
+                    <div class="amount">US$0</div>
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-check"></i> Newsletter Mensual RE</li>
+                        <li><i class="fa-solid fa-check"></i> Invitación a Eventos Abiertos</li>
+                        <li><i class="fa-solid fa-check"></i> Novedades del Sector</li>
+                    </ul>
+                    <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" style="background: #111; color: #fff; width: 100%; display: block;" target="_blank">Sumarme</a>
                 </div>
                 <div class="price-card featured">
+                    <div style="position: absolute; top: 15px; right: 20px; background: var(--primary); color: #000; font-size: 0.65rem; font-weight: 800; padding: 5px 12px; border-radius: 2px;">MÁS ELEGIDA</div>
                     <h4>Premium</h4>
                     <div class="amount">US$75<span> / mes</span></div>
-                    <p style="color: #666; margin-bottom: 25px;">Para quienes buscan conectar, aprender y hacer negocios de verdad. 
-Incluye: Grupo VIP, Directorio de miembros, rondas de networking, webinars exclusivos, descuento en experiencias presenciales, mentoring grupal y mucho más!!.</p>
-                    <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" style="background: var(--primary);" target="_blank">Suscribirme →</a>
+                    <ul class="price-list">
+                        <li><i class="fa-solid fa-check"></i> Grupo VIP WhatsApp 24/7</li>
+                        <li><i class="fa-solid fa-check"></i> Directorio exclusivo de miembros</li>
+                        <li><i class="fa-solid fa-check"></i> Rondas de Networking Guiado</li>
+                        <li><i class="fa-solid fa-check"></i> Webinars Técnicos Mensuales</li>
+                        <li><i class="fa-solid fa-check"></i> Mentoring Grupal Directo</li>
+                        <li><i class="fa-solid fa-check"></i> Descuento en Experiencias Presenciales</li>
+                    </ul>
+                    <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" style="width: 100%; display: block;" target="_blank">Suscribirme Ahora →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="final-cta">
-        <div class="container">
-            <h2>¿Listo para subir de nivel?</h2>
-            <p>Postulate hoy para ser parte de la red más influyente del Real Estate.</p>
-            <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="hero-cta" target="_blank">Postularme ahora</a>
-        </div>
-    </section>
-    
     <footer>
         <div class="container">
-            <p>BUILDERS MEMBERSHIP CLUB © 2025 · Profesionalizando el Real Estate</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.5;">Nestor Ciparelli · Aldi Enriquez · Charly Maddalena</p>
+            <p>BUILDERS REAL ESTATE CLUB © 2025 · Profesionalizar o Desaparecer</p>
+            <p style="margin-top: 10px; font-size: 0.75rem; opacity: 0.4;">Nestor Ciparelli · Aldi Enriquez · Charly Maddalena</p>
         </div>
     </footer>
+
+    <script>
+        const actors = [
+            {
+                title: "Desarrolladores",
+                who: "Líderes de proyecto y constructoras.",
+                do: "Crean activos inmobiliarios desde el suelo.",
+                seek: "Materiales pro, comercialización y capital.",
+                give: "Generan inventario y traccionan la industria."
+            },
+            {
+                title: "Inmobiliarios",
+                who: "Brokers, agentes y firmas de corretaje.",
+                do: "Comercializan y venden propiedades.",
+                seek: "Productos sólidos y formación comercial.",
+                give: "Data real del mercado y cierre de ventas."
+            },
+            {
+                title: "Dueños de PyME",
+                who: "Proveedores industriales y comerciales.",
+                do: "Suministran insumos clave para la obra.",
+                seek: "Invertir excedentes en RE y contratos estables.",
+                give: "Materiales de vanguardia y capital de inversión."
+            },
+            {
+                title: "Servicios Directos",
+                who: "Arquitectos, agrimensores y técnicos.",
+                do: "Diseño y ejecución técnica de proyectos.",
+                seek: "Vínculos con desarrolladores y nuevos desafíos.",
+                give: "Viabilidad arquitectónica y precisión técnica."
+            },
+            {
+                title: "Servicios Indirectos",
+                who: "Consultores, legales, mkt y tecnología.",
+                do: "Soporte estratégico y optimización digital.",
+                seek: "Clientes de alto valor y escala en el sector.",
+                give: "Seguridad jurídica y escalabilidad con IA."
+            }
+        ];
+
+        const card = document.getElementById('node-info');
+
+        function showInfo(index) {
+            const data = actors[index];
+            document.getElementById('info-title').innerText = data.title;
+            document.getElementById('info-who').innerText = data.who;
+            document.getElementById('info-do').innerText = data.do;
+            document.getElementById('info-seek').innerText = data.seek;
+            document.getElementById('info-give').innerText = data.give;
+            
+            card.classList.add('active');
+            
+            if (index === 0) { 
+                card.style.left = "50%";
+                card.style.transform = "translateX(-50%)";
+                card.style.top = "5%";
+            } else if (index === 1 || index === 2) { 
+                card.style.left = "75%";
+                card.style.transform = "none";
+                card.style.top = index === 1 ? "25%" : "55%";
+            } else { 
+                card.style.left = "0%";
+                card.style.transform = "none";
+                card.style.top = index === 4 ? "25%" : "55%";
+            }
+        }
+
+        function hideInfo() { card.classList.remove('active'); }
+    </script>
 </body>
-
 </html>
-
