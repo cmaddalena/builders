@@ -69,17 +69,17 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px 0 40px;
+            padding: 120px 0 40px;
             background: radial-gradient(circle at 50% 30%, rgba(255, 193, 7, 0.05) 0%, transparent 70%);
         }
         .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin-bottom: 40px; font-weight: 300; }
+        .hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 750px; margin-bottom: 40px; font-weight: 300; }
 
         /* --- GRAPHIC ECOSYSTEM --- */
         .ecosystem-section { padding: 40px 0 80px; background: #080808; border-top: 1px solid var(--border); text-align: center; position: relative; }
         .graphic-wrapper { 
             position: relative; 
-            max-width: 700px; 
+            max-width: 720px; 
             margin: 40px auto; 
             aspect-ratio: 1/1; 
         }
@@ -88,7 +88,7 @@
         @keyframes rotateText { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes pulseGlow { 
             0% { r: 5; opacity: 0.8; stroke-width: 0; }
-            50% { r: 18; opacity: 0; stroke-width: 4; }
+            50% { r: 20; opacity: 0; stroke-width: 4; }
             100% { r: 5; opacity: 0; }
         }
 
@@ -101,7 +101,7 @@
         
         .node-label { 
             fill: #fff; 
-            font-size: 13px; 
+            font-size: 12px; 
             font-weight: 800; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
@@ -110,7 +110,7 @@
 
         .info-card {
             position: absolute;
-            width: 310px;
+            width: 320px;
             background: rgba(10, 10, 10, 0.98);
             border: 1px solid var(--primary);
             padding: 24px;
@@ -135,19 +135,10 @@
         .section-tag { color: var(--primary); font-weight: 700; font-size: 0.9rem; letter-spacing: 3px; display: block; margin-bottom: 15px; text-transform: uppercase; text-align: center; }
         h2 { font-size: 2.8rem; margin-bottom: 60px; color: #fff; text-align: center; }
 
-        /* Pillars Section */
         .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .pillar-card { 
-            padding: 40px; 
-            background: linear-gradient(145deg, #111, #080808); 
-            border: 1px solid var(--border); 
-            transition: 0.3s; 
-            text-align: left;
-        }
+        .pillar-card { padding: 40px; background: linear-gradient(145deg, #111, #080808); border: 1px solid var(--border); transition: 0.3s; text-align: left; }
         .pillar-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .pillar-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; display: block; }
-        .pillar-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: #fff; }
-        .pillar-card p { color: var(--text-dim); font-size: 1rem; font-weight: 300; }
 
         .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .problem-card { padding: 45px; background: var(--card-bg); border: 1px solid var(--border); position: relative; }
@@ -185,8 +176,8 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
             .sustentabilidad-grid { grid-template-columns: 1fr; }
-            .graphic-wrapper { transform: scale(0.9); }
-            .info-card { width: 280px; left: 50% !important; transform: translateX(-50%) !important; bottom: -20px !important; top: auto !important; }
+            .graphic-wrapper { transform: scale(0.85); margin: 0 auto; }
+            .info-card { width: 280px; left: 50% !important; transform: translateX(-50%) !important; bottom: -40px !important; top: auto !important; }
         }
     </style>
 </head>
@@ -199,27 +190,26 @@
                 <img src="logo_white.png" alt="Builders Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/45x45?text=B'">
                 <div style="font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;">BUILDERS</div>
             </a>
-           <!--  <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">QUIERO UNIRME →</a> -->
+            <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">Postularse →</a>
         </div>
     </header>
 
     <!-- HERO -->
-   <section class="hero">
+    <section class="hero">
         <div class="container">
-            <span class="badge">Ecosistema Real Estate</span>
-            <h1>Profesionalizando el </br> Real Estate.</h1>
-            <p>La primera comunidad <strong>Triple C</strong> diseñada para elevar la cadena de valor inmobiliaria a través de la conexión genuina y la tecnología.</p>
-            <a href="https://forms.gle/b7ghZJY1NgWMbmqZA" class="header-cta" target="_blank">QUIERO UNIRME →</a>
+            <span class="section-tag">Profesionalizando el Real Estate</span>
+            <h1>Profesionalizar <br> o Desaparecer.</h1>
+            <p>La red exclusiva donde desarrolladores, inmobiliarios, proveedores e inversores integran la cadena de valor inmobiliaria bajo un sistema de Confianza, Conocimiento y Crecimiento.</p>
+            <a href="#ecosistema" class="header-cta" style="padding: 18px 45px; font-size: 1rem;">Ver Ecosistema</a>
         </div>
     </section>
 
-
-    <!-- ECOSYSTEM GRAPHIC -->
+    <!-- ECOSYSTEM GRAPHIC - HEXAGON -->
     <section class="ecosystem-section" id="ecosistema">
         <div class="container">
-            <span class="section-tag">Sinergia Triple C</span>
+            <span class="section-tag">Sinergia en Movimiento</span>
             <h2 style="margin-bottom: 20px;">El Ecosistema Builders</h2>
-            <p style="color: var(--text-dim); max-width: 750px; margin: 0 auto 30px;">Un flujo circular donde cada actor potencia al otro. Descubrí el detalle en cada vértice.</p>
+            <p style="color: var(--text-dim); max-width: 750px; margin: 0 auto 30px;">Un flujo circular de 6 actores clave que potencian la industria. Descubrí el detalle en cada vértice.</p>
             
             <div class="graphic-wrapper">
                 <!-- Info Tooltip Dinámico -->
@@ -232,41 +222,57 @@
                 </div>
 
                 <svg viewBox="0 0 800 800" class="pentagon-svg">
-                    <circle cx="400" cy="400" r="300" fill="none" stroke="#222" stroke-width="2" />
-                    <circle cx="400" cy="400" r="220" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="8 12" />
+                    <!-- Synergy Circles -->
+                    <circle cx="400" cy="400" r="280" fill="none" stroke="#222" stroke-width="2" />
+                    <circle cx="400" cy="400" r="210" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="8 12" />
                     
-                    <defs><path id="ringPath" d="M 400, 400 m -140, 0 a 140,140 0 1,1 280,0 a 140,140 0 1,1 -280,0" /></defs>
+                    <!-- Inner Rotating Rings - 3C -->
+                    <defs><path id="ringPath" d="M 400, 400 m -130, 0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" /></defs>
                     <text class="ring-text"><textPath href="#ringPath">CONEXIÓN • CONOCIMIENTO • CRECIMIENTO • </textPath></text>
 
+                    <!-- Center Logo Fiel -->
                     <circle cx="400" cy="400" r="65" fill="#000" stroke="var(--primary)" stroke-width="2" />
                     <image href="logo_white.png" x="350" y="350" height="100" width="100" />
 
-                    <!-- Node 1: Desarrolladores -->
-                    <g class="actor-node" onmouseenter="showInfo(0)" onmouseleave="hideInfo()" transform="translate(400, 100)">
+                    <!-- Vértices Titilantes con Etiquetas Externas -->
+                    
+                    <!-- 1. Desarrolladores (TOP) -->
+                    <g class="actor-node" onmouseenter="showInfo(0)" onmouseleave="hideInfo()" transform="translate(400, 120)">
                         <circle class="node-pulse" cx="0" cy="0" />
                         <circle class="node-dot" cx="0" cy="0" />
                         <text class="node-label" y="-25" text-anchor="middle">Desarrolladores</text>
                     </g>
-                    <!-- Node 2: Inmobiliarios -->
-                    <g class="actor-node" onmouseenter="showInfo(1)" onmouseleave="hideInfo()" transform="translate(685, 307)">
+
+                    <!-- 2. Inmobiliarios (TOP RIGHT) -->
+                    <g class="actor-node" onmouseenter="showInfo(1)" onmouseleave="hideInfo()" transform="translate(642, 260)">
                         <circle class="node-pulse" cx="0" cy="0" />
                         <circle class="node-dot" cx="0" cy="0" />
                         <text class="node-label" x="20" y="5" text-anchor="start">Inmobiliarios</text>
                     </g>
-                    <!-- Node 3: Dueños PyME -->
-                    <g class="actor-node" onmouseenter="showInfo(2)" onmouseleave="hideInfo()" transform="translate(576, 642)">
+
+                    <!-- 3. Inversores (BOT RIGHT) -->
+                    <g class="actor-node" onmouseenter="showInfo(2)" onmouseleave="hideInfo()" transform="translate(642, 540)">
                         <circle class="node-pulse" cx="0" cy="0" />
                         <circle class="node-dot" cx="0" cy="0" />
-                        <text class="node-label" x="20" y="20" text-anchor="start">Dueños PyME</text>
+                        <text class="node-label" x="20" y="20" text-anchor="start">Inversores</text>
                     </g>
-                    <!-- Node 4: Servicios Directos -->
-                    <g class="actor-node" onmouseenter="showInfo(3)" onmouseleave="hideInfo()" transform="translate(224, 642)">
+
+                    <!-- 4. Dueños PyME (BOTTOM) -->
+                    <g class="actor-node" onmouseenter="showInfo(3)" onmouseleave="hideInfo()" transform="translate(400, 680)">
+                        <circle class="node-pulse" cx="0" cy="0" />
+                        <circle class="node-dot" cx="0" cy="0" />
+                        <text class="node-label" y="35" text-anchor="middle">Dueños PyME</text>
+                    </g>
+
+                    <!-- 5. Serv. Directos (BOT LEFT) -->
+                    <g class="actor-node" onmouseenter="showInfo(4)" onmouseleave="hideInfo()" transform="translate(158, 540)">
                         <circle class="node-pulse" cx="0" cy="0" />
                         <circle class="node-dot" cx="0" cy="0" />
                         <text class="node-label" x="-20" y="20" text-anchor="end">Servicios Directos</text>
                     </g>
-                    <!-- Node 5: Servicios Indirectos -->
-                    <g class="actor-node" onmouseenter="showInfo(4)" onmouseleave="hideInfo()" transform="translate(115, 307)">
+
+                    <!-- 6. Serv. Indirectos (TOP LEFT) -->
+                    <g class="actor-node" onmouseenter="showInfo(5)" onmouseleave="hideInfo()" transform="translate(158, 260)">
                         <circle class="node-pulse" cx="0" cy="0" />
                         <circle class="node-dot" cx="0" cy="0" />
                         <text class="node-label" x="-20" y="5" text-anchor="end">Servicios Indirectos</text>
@@ -276,8 +282,33 @@
         </div>
     </section>
 
+    <!-- PILLARS SECTION -->
+    <section id="pilares">
+        <div class="container">
+            <span class="section-tag">Nuestra Metodología</span>
+            <h2>Los Pilares de Builders</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <i class="fa-solid fa-link"></i>
+                    <h3>Conexión</h3>
+                    <p>Networking guiado de alto nivel. Cenas íntimas, viajes de negocios y un directorio exclusivo para que el contacto sea directo y sin intermediarios.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fa-solid fa-brain"></i>
+                    <h3>Conocimiento</h3>
+                    <p>Webinars técnicos quincenales, formación en IA aplicada al Real Estate y mentorías con quienes ya recorrieron el camino que vos buscás.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Crecimiento</h3>
+                    <p>Acceso a pools de inversión, visibilidad de marca dentro del ecosistema y herramientas de productividad para escalar tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- PROBLEM SECTION -->
-    <section>
+    <section style="background: #080808;">
         <div class="container">
             <span class="section-tag">Contexto Actual</span>
             <h2 style="text-align: left; max-width: 700px;">El mercado cambió. ¿Tu red de contactos también?</h2>
@@ -285,7 +316,7 @@
                 <div class="problem-card">
                     <span>01</span>
                     <h3>Soledad Operativa</h3>
-                    <p>Tomar decisiones de millones de dólares sin una mesa de confianza que valide tu visión en tiempo real.</p>
+                    <p>Tomar decisiones estratégicas de millones de dólares sin una mesa de confianza que valide tu visión en tiempo real.</p>
                 </div>
                 <div class="problem-card">
                     <span>02</span>
@@ -295,37 +326,13 @@
                 <div class="problem-card">
                     <span>03</span>
                     <h3>Networking Vacío</h3>
-                    <p>Cansados de eventos sociales donde solo se intercambian tarjetas. Buscamos alianzas reales.</p>
+                    <p>Cansados de eventos sociales donde solo se intercambian tarjetas que no sirven. Buscamos alianzas reales.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PILLARS SECTION -->
-    <section id="pilares" style="background: #080808;">
-        <div class="container">
-            <span class="section-tag">Nuestra Metodología</span>
-            <h2>Los Pilares de Builders</h2>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <i class="fa-solid fa-link"></i>
-                    <h3>Conexión</h3>
-                    <p>Networking guiado de alto nivel. Cenas íntimas de mesa redonda, viajes de negocios y un directorio exclusivo para que el contacto sea directo y sin intermediarios.</p>
-                </div>
-                <div class="pillar-card">
-                    <i class="fa-solid fa-brain"></i>
-                    <h3>Conocimiento</h3>
-                    <p>Webinars técnicos quincenales, formación en IA aplicada al Real Estate y mentorías con quienes ya recorrieron el camino que vos querés transitar.</p>
-                </div>
-                <div class="pillar-card">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <h3>Crecimiento</h3>
-                    <p>Acceso a pools de inversión, visibilidad de marca dentro del ecosistema y herramientas de productividad para escalar tu negocio de manera rentable.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- SUSTENTABILIDAD -->
     <section class="sustentabilidad">
         <div class="container">
             <div class="sustentabilidad-grid">
@@ -339,7 +346,7 @@
                         <li><i class="fa-solid fa-circle-check"></i> <strong>Ventaja Competitiva:</strong> Liderar con estándares internacionales de construcción.</li>
                     </ul>
                 </div>
-                <img src="https://images.unsplash.com/photo-1518005020251-582c7897655d?auto=format&fit=crop&w=800&q=80" alt="Sustentabilidad" class="sustentabilidad-img">
+                <img src="https://images.unsplash.com/photo-1518005020251-582c7897655d?auto=format&fit=crop&w=800&q=80" alt="Builders Real Estate" class="sustentabilidad-img">
             </div>
         </div>
     </section>
@@ -432,37 +439,44 @@
             {
                 title: "Desarrolladores",
                 who: "Líderes de proyecto y constructoras.",
-                do: "Crean activos inmobiliarios desde el suelo.",
-                seek: "Materiales pro, comercialización y capital.",
-                give: "Generan inventario y traccionan la industria."
+                do: "Crean los activos inmobiliarios que traccionan la industria.",
+                seek: "Capital inteligente, materiales pro y comercialización ágil.",
+                give: "Proyectos de escala e inventario real para el mercado."
             },
             {
                 title: "Inmobiliarios",
                 who: "Brokers, agentes y firmas de corretaje.",
-                do: "Comercializan y venden propiedades.",
-                seek: "Productos sólidos y formación comercial.",
-                give: "Data real del mercado y cierre de ventas."
+                do: "Comercializan y cierran operaciones en el mercado.",
+                seek: "Proyectos sólidos, formación y red de confianza.",
+                give: "Data real del consumidor y músculo de ventas."
+            },
+            {
+                title: "Inversores",
+                who: "Corporativos, fondos y particulares.",
+                do: "Aportan el capital para traccionar grandes desarrollos.",
+                seek: "Proyectos de primera mano y seguridad de conocer al desarrollador.",
+                give: "Liquidez y validación financiera para el ecosistema."
             },
             {
                 title: "Dueños de PyME",
                 who: "Proveedores industriales y comerciales.",
-                do: "Suministran insumos clave para la obra.",
-                seek: "Invertir excedentes en RE y contratos estables.",
-                give: "Materiales de vanguardia y capital de inversión."
+                do: "Suministran los insumos clave para la ejecución.",
+                seek: "Contratos estables e invertir excedentes en Real Estate.",
+                give: "Materiales, tecnología y capacidad operativa."
             },
             {
                 title: "Servicios Directos",
                 who: "Arquitectos, agrimensores y técnicos.",
-                do: "Diseño y ejecución técnica de proyectos.",
-                seek: "Vínculos con desarrolladores y nuevos desafíos.",
+                do: "Ejecución técnica y diseño de vanguardia.",
+                seek: "Nuevos desafíos constructivos y red de desarrolladores.",
                 give: "Viabilidad arquitectónica y precisión técnica."
             },
             {
                 title: "Servicios Indirectos",
-                who: "Consultores, legales, mkt y tecnología.",
-                do: "Soporte estratégico y optimización digital.",
+                who: "Legales, mkt, contables y tecnología.",
+                do: "Brindan el soporte estratégico y digital necesario.",
                 seek: "Clientes de alto valor y escala en el sector.",
-                give: "Seguridad jurídica y escalabilidad con IA."
+                give: "Seguridad jurídica, orden y escalabilidad con IA."
             }
         ];
 
@@ -478,18 +492,23 @@
             
             card.classList.add('active');
             
-            if (index === 0) { 
+            // Lógica de posición lateral inteligente para Hexágono
+            if (index === 0) { // Desarrolladores (Arriba)
                 card.style.left = "50%";
                 card.style.transform = "translateX(-50%)";
                 card.style.top = "5%";
-            } else if (index === 1 || index === 2) { 
+            } else if (index === 3) { // PyME (Abajo)
+                card.style.left = "50%";
+                card.style.transform = "translateX(-50%)";
+                card.style.top = "55%";
+            } else if (index === 1 || index === 2) { // Lado Derecho (Inmobiliarios, Inversores)
                 card.style.left = "75%";
                 card.style.transform = "none";
-                card.style.top = index === 1 ? "25%" : "55%";
-            } else { 
+                card.style.top = index === 1 ? "20%" : "45%";
+            } else { // Lado Izquierdo (S. Directos, S. Indirectos)
                 card.style.left = "0%";
                 card.style.transform = "none";
-                card.style.top = index === 4 ? "25%" : "55%";
+                card.style.top = index === 5 ? "20%" : "45%";
             }
         }
 
